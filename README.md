@@ -8,7 +8,7 @@ Big credits to the following two developers:
 
 ### Usage
 
-Create an `.env  ` file for OpenVPN credentials with the following content:
+Create an `.env` file for OpenVPN credentials with the following content:
 
 ```sh
 OVPN_USER={YOUR OPENVPN USERNAME}
