@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  vpn:
+    image: dperson/openvpn-client
+    container_name: openvpn-proxy
+    read_only: true
+    tmpfs:
+      - /run
+      - /tmp
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+    networks:
+      - default
+    volumes:
+      - "./vpn:/vpn"
+    environment:
+      - VPN_AUTH=${OVPN_USER};${OVPN_PAZZ}
+    dns:
+      - 1.1.1.1
+    ports:
+      - "5800:5800"
+      - "5900:5900"
+
+  jdownloader2:
+    image: jlesage/jdownloader-2
+    container_name: jdownloader2
+    depends_on:
+      - vpn
+    network_mode: "service:vpn"
+    volumes:
+      - "./data:/config:rw"
+      - "/media/usb/downloads:/output:rw"
+
+networks:
+  default:
