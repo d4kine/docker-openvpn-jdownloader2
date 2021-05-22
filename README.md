@@ -15,7 +15,7 @@ OVPN_USER={YOUR OPENVPN USERNAME}
 OVPN_PAZZ={YOUR OPENVPN PASSWORD}
 ```
 
-After taht copy your openvpn-configuration to `/vpn/config.ovpn`
+Copy your OpenVPN-configuration to `/vpn/config.ovpn`
 
 Start the compose file with `docker-compose up -d` and your JDownloader should be using the VPN and is accessible via VNC port 5900
 
